@@ -1,0 +1,64 @@
+@import "./../../assets/colors/colors.scss";
+
+.main {
+  height: 100%;
+
+  &__background {
+    position: absolute;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    height: 380px;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &_light {
+      background-image: url("../../assets/images/bg-desktop-light.jpg");
+    }
+
+    &_dark {
+      background-image: url("../../assets/images/bg-desktop-dark.jpg");
+    }
+  }
+
+  &__block {
+    width: 700px;
+    margin: 100px auto 0;
+  }
+
+  &__section {
+    display: flex;
+    align-items: center;
+  }
+
+  &__section_first {
+    justify-content: space-between;
+  }
+
+  &__section-title {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 36px;
+    letter-spacing: 0.8rem;
+    color: $columns-background-light;
+  }
+
+  &__theme-btn {
+    width: 26px;
+    height: 26px;
+    border: none;
+    background-color: transparent;
+
+    &:hover {
+      cursor: pointer;
+    }
+
+    &_light {
+      background-image: url("../../assets/images/icon-moon.svg");
+    }
+
+    &_dark {
+      background-image: url("../../assets/images/icon-sun.svg");
+    }
+  }
+}

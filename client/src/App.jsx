@@ -1,7 +1,8 @@
+import TodoPage from "./pages/todoPage/TodoPage";
 import "./App.scss";
 
 function App() {
-  return <></>;
+  return <TodoPage />;
 }
 
 export default App;
