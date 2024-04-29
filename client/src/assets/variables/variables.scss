@@ -1,25 +1,5 @@
 @import "../colors/colors.scss";
 
-// Colors
-// Primary
-$buttons-color: $blight-blue;
-$check-background: $check-background;
-
-// Light Them
-$columns-background-light: $very-light-gray;
-$background-light: $very-light-grayish-blue;
-$border-light: $light-grayish-blue;
-$text-color-light: $dark-grayish-blue;
-$text-color-light-hover: $very-dark-grayish-blue-lighter;
-
-// Dark Theme
-$columns-background-dark: $very-dark-desaturated-blue;
-$background-dark: $very-dark-blue;
-$border-dark: $dark-grayish-blue-darker;
-$text-color-dark: $light-grayish-blue-dark;
-$text-color-dark-hover: $light-grayish-blue-hover;
-
-
 // Screen sizes
 $mobile-size: 320px;
 $tablet-size: 744px;
