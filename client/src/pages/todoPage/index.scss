@@ -1,16 +1,25 @@
 @import "./../../assets/colors/colors.scss";
 
 .main {
-  height: 100%;
+  transition: background 0.3s ease-in-out;
+
+  &_dark {
+    background-color: $background-dark;
+  }
+
+  &_light {
+    background-color: $background-light;
+  }
 
   &__background {
     position: absolute;
     top: 0;
-    z-index: -1;
+    z-index: 1;
     width: 100%;
     height: 380px;
     background-repeat: no-repeat;
     background-size: cover;
+    transition: background 0.3s ease-in-out;
 
     &_light {
       background-image: url("../../assets/images/bg-desktop-light.jpg");
@@ -23,7 +32,10 @@
 
   &__block {
     width: 700px;
+    height: 900px;
     margin: 100px auto 0;
+    position: relative;
+    z-index: 2;
   }
 
   &__section {
@@ -48,9 +60,11 @@
     height: 26px;
     border: none;
     background-color: transparent;
+    transition: opacity 0.3s ease-in-out, background 0.3s ease-in-out;
 
     &:hover {
       cursor: pointer;
+      opacity: 0.7;
     }
 
     &_light {
