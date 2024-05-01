@@ -3,6 +3,25 @@ import "./index.scss";
 
 export default function TodoPage() {
   const [isDarkTheme, setDarkTheme] = useState(false);
+  const [task, setTask] = useState("");
+
+  const handleTaskSubmit = (event) => {
+    event.preventDefault();
+
+    console.log("Отправка задачи:", task);
+
+    setTask("");
+  };
+
+  const handleInputChange = (event) => {
+    setTask(event.target.value);
+  };
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleTaskSubmit(event);
+    }
+  };
 
   return (
     <div className={`main ${isDarkTheme ? "main_dark" : "main_light"}`}>
@@ -24,7 +43,34 @@ export default function TodoPage() {
           />
         </div>
 
-        <div className="main__section main__section_second"></div>
+        <div
+          className={`input-block ${
+            isDarkTheme ? "input-block_dark" : "input-block_light"
+          }`}
+        >
+          <div
+            className={`input-block__circle ${
+              isDarkTheme
+                ? "input-block__circle_dark"
+                : "input-block__circle_light"
+            }`}
+          />
+
+          <input
+            type="text"
+            name="task"
+            id="task"
+            className={`input-block__textfield ${
+              isDarkTheme
+                ? "input-block__textfield_dark"
+                : "input-block__textfield_light"
+            }`}
+            value={task}
+            onChange={handleInputChange}
+            onKeyUp={handleKeyPress}
+            placeholder="Create a new todo..."
+          />
+        </div>
 
         <div className="main__section main__section_third"></div>
       </div>

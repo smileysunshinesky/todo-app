@@ -1,6 +1,9 @@
 @import "./../../assets/colors/colors.scss";
+@import "./../../assets/fonts/fonts.scss";
 
 .main {
+  min-height: 900px;
+  height: 100%;
   transition: background 0.3s ease-in-out;
 
   &_dark {
@@ -32,12 +35,12 @@
 
   &__block {
     width: 700px;
-    height: 900px;
     margin: 100px auto 0;
     position: relative;
     z-index: 2;
   }
 
+  // First Section
   &__section {
     display: flex;
     align-items: center;
@@ -73,6 +76,65 @@
 
     &_dark {
       background-image: url("../../assets/images/icon-sun.svg");
+    }
+  }
+}
+
+.input-block {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 50px;
+  padding: 20px;
+  width: 100%;
+  height: 80px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  transition: background 0.3s ease-in-out;
+
+  &_light {
+    background-color: $columns-background-light;
+  }
+
+  &_dark {
+    background-color: $columns-background-dark;
+  }
+
+  &__circle {
+    width: 26px;
+    height: 26px;
+    border: 1px solid $border-light;
+    border-radius: 100%;
+    transition: border 0.3s ease-in-out;
+
+    &_light {
+      border: 1px solid $border-light;
+    }
+
+    &_dark {
+      border: 1px solid $border-dark;
+    }
+  }
+
+  &__textfield {
+    width: 90%;
+    height: 40px;
+    padding-left: 10px;
+    box-sizing: border-box;
+    font-size: 20px;
+    border: none;
+    outline: none;
+    font-family: "JosefinSans", serif;
+    transition: background 0.3s ease-in-out, color 0.3s ease-in-out;
+
+    &_light {
+      background-color: $columns-background-light;
+      color: $text-color-light;
+    }
+
+    &_dark {
+      background-color: $columns-background-dark;
+      color: $text-color-dark;
     }
   }
 }
