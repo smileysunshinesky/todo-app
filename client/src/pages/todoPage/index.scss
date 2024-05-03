@@ -2,7 +2,7 @@
 @import "./../../assets/fonts/fonts.scss";
 
 .main {
-  min-height: 900px;
+  min-height: 700px;
   height: 100%;
   transition: background 0.3s ease-in-out;
 
@@ -78,6 +78,21 @@
       background-image: url("../../assets/images/icon-sun.svg");
     }
   }
+
+  &__subtitle {
+    margin-top: 50px;
+    font-size: 18px;
+    text-align: center;
+    transition: color 0.3s ease-in-out;
+
+    &_light {
+      color: $text-color-light;
+    }
+
+    &_dark {
+      color: $text-color-dark;
+    }
+  }
 }
 
 .input-block {
@@ -135,6 +150,156 @@
     &_dark {
       background-color: $columns-background-dark;
       color: $text-color-dark;
+    }
+  }
+}
+
+.tabs-block {
+  margin-top: 40px;
+  box-shadow: 0px 10px 30px 0px rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+}
+
+.todo-tab {
+  display: flex;
+  align-items: center;
+  padding: 0 15px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 70px;
+  transition: background 0.3s ease-in-out, border 0.3s ease-in-out;
+
+  &:first-child {
+    border-radius: 10px 10px 0 0;
+  }
+
+  &_light {
+    background-color: $columns-background-light;
+    border-bottom: 1px solid $border-light;
+  }
+
+  &_dark {
+    background-color: $columns-background-dark;
+    border-bottom: 1px solid $border-dark;
+  }
+
+  &__check-btn {
+    display: grid;
+    place-content: center;
+    width: 28px;
+    height: 28px;
+    appearance: none;
+    -webkit-appearance: none;
+    border-radius: 100%;
+    transition: border 0.3s ease-in-out;
+    cursor: pointer;
+
+    &:checked {
+      background: $check-background;
+    }
+
+    &::before {
+      content: "";
+      width: 12px;
+      height: 12px;
+      transform: scale(0);
+      transform-origin: bottom left;
+      clip-path: polygon(14% 44%, 0 65%, 50% 100%, 100% 16%, 80% 0%, 43% 62%);
+      transition: transform 0.2s ease-in-out;
+      box-shadow: inset 1em 1em $columns-background-light;
+    }
+
+    &:checked::before {
+      transform: scale(1);
+    }
+
+    &_light {
+      border: 1px solid $border-light;
+    }
+
+    &_dark {
+      border: 1px solid $border-dark;
+    }
+  }
+
+  &__text {
+    width: 80%;
+    padding: 0 20px;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 20px;
+    transition: color 0.3s ease-in-out;
+
+    &_light {
+      color: $text-color-light;
+    }
+
+    &_dark {
+      color: $text-color-dark;
+    }
+  }
+}
+
+.total-lists {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px;
+  box-sizing: border-box;
+  width: 100%;
+  height: 60px;
+  border-radius: 0 0 10px 10px;
+  transition: background 0.3s ease-in-out;
+
+  &_light {
+    background-color: $columns-background-light;
+  }
+
+  &_dark {
+    background-color: $columns-background-dark;
+  }
+
+  &__count {
+    margin: 0;
+    opacity: 0.8;
+    transition: color 0.3s ease-in-out;
+
+    &_light {
+      color: $text-color-light;
+    }
+
+    &_dark {
+      color: $text-color-dark;
+    }
+  }
+
+  &__filter-block {
+    display: flex;
+    justify-content: space-between;
+    width: 200px;
+  }
+
+  &__btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    opacity: 0.8;
+    font-size: 14px;
+    transition: color 0.3s ease-in-out;
+
+    &_light {
+      color: $text-color-light;
+    }
+
+    &_dark {
+      color: $text-color-dark;
+    }
+
+    &:hover {
+      color: $buttons-color;
     }
   }
 }
