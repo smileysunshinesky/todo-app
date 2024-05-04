@@ -1,9 +1,17 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleTheme } from "../../redux/reducers/themeSlice";
 import "./index.scss";
+import TodoTab from "../../components/todoTab/TodoTab";
 
 export default function TodoPage() {
-  const [isDarkTheme, setDarkTheme] = useState(false);
+  const isDarkTheme = useSelector((state) => state.theme.isDarkTheme);
+  const dispatch = useDispatch();
   const [task, setTask] = useState("");
+
+  const handleThemeToggle = () => {
+    dispatch(toggleTheme());
+  };
 
   const handleTaskSubmit = (event) => {
     event.preventDefault();
@@ -39,7 +47,7 @@ export default function TodoPage() {
             className={`main__theme-btn ${
               isDarkTheme ? "main__theme-btn_dark" : "main__theme-btn_light"
             }`}
-            onClick={() => setDarkTheme(!isDarkTheme)}
+            onClick={handleThemeToggle}
           />
         </div>
 
@@ -73,77 +81,11 @@ export default function TodoPage() {
         </div>
 
         <div className="tabs-block">
-          <div
-            className={`todo-tab ${
-              isDarkTheme ? "todo-tab_dark" : "todo-tab_light"
-            }`}
-          >
-            <input
-              type="checkbox"
-              className={`todo-tab__check-btn ${
-                isDarkTheme
-                  ? "todo-tab__check-btn_dark"
-                  : "todo-tab__check-btn_light"
-              }`}
-            />
-
-            <p
-              className={`todo-tab__text ${
-                isDarkTheme ? "todo-tab__text_dark" : "todo-tab__text_light"
-              }`}
-            >
-              Testing IDK with very long message I think yeah... blah blahb
-              lha...
-            </p>
-          </div>
-
-          <div
-            className={`todo-tab ${
-              isDarkTheme ? "todo-tab_dark" : "todo-tab_light"
-            }`}
-          >
-            <input
-              type="checkbox"
-              className={`todo-tab__check-btn ${
-                isDarkTheme
-                  ? "todo-tab__check-btn_dark"
-                  : "todo-tab__check-btn_light"
-              }`}
-            />
-
-            <p
-              className={`todo-tab__text ${
-                isDarkTheme ? "todo-tab__text_dark" : "todo-tab__text_light"
-              }`}
-            >
-              Testing IDK with very long message I think yeah... blah blahb
-              lha...
-            </p>
-          </div>
-
-          <div
-            className={`todo-tab ${
-              isDarkTheme ? "todo-tab_dark" : "todo-tab_light"
-            }`}
-          >
-            <input
-              type="checkbox"
-              className={`todo-tab__check-btn ${
-                isDarkTheme
-                  ? "todo-tab__check-btn_dark"
-                  : "todo-tab__check-btn_light"
-              }`}
-            />
-
-            <p
-              className={`todo-tab__text ${
-                isDarkTheme ? "todo-tab__text_dark" : "todo-tab__text_light"
-              }`}
-            >
-              Testing IDK with very long message I think yeah... blah blahb
-              lha...
-            </p>
-          </div>
+          <TodoTab />
+          <TodoTab />
+          <TodoTab />
+          <TodoTab />
+          <TodoTab />
 
           <div
             className={`total-lists ${
