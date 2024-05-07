@@ -1,8 +1,10 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../../redux/reducers/themeSlice";
+import axios from "axios";
 import "./index.scss";
 import TodoTab from "../../components/todoTab/TodoTab";
+
 
 export default function TodoPage() {
   const isDarkTheme = useSelector((state) => state.theme.isDarkTheme);
@@ -13,12 +15,19 @@ export default function TodoPage() {
     dispatch(toggleTheme());
   };
 
-  const handleTaskSubmit = (event) => {
+  const handleTaskSubmit = async (event) => {
     event.preventDefault();
-
-    console.log("Отправка задачи:", task);
-
-    setTask("");
+  
+    try {
+      const response = await axios.post("/api/todos", {
+        description: task,
+      });
+  
+      console.log("Task added: ", response.data);
+      setTask(""); 
+    } catch (error) {
+      console.error("Some error: ", error);
+    }
   };
 
   const handleInputChange = (event) => {
