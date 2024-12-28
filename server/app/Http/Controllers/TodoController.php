@@ -7,37 +7,74 @@ use App\Models\Todo;
 
 class TodoController extends Controller
 {
+    /**
+     * Display a listing of the resource.
+     */
     public function index()
     {
-        $todos = Todo::all();
-
-        return response()->json($todos);
+        //
     }
 
-    public function create(Request $request)
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
     {
-        $todo = Todo::create([
-            'description' => $request->description,
-            'completed' => false,
+        //
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     */
+    public function store(Request $request)
+    {
+        // Validate the request data
+        $request->validate([
+            'description' => 'required|string|max:255',
+            'completed' => 'boolean',
         ]);
 
-        return response()->json($todo);
-    }
-
-    public function update(Request $request, $id)
-    {
-        $todo = Todo::find($id);
-
-        $todo->completed = $request->has('completed') ? $request->completed : $todo->completed;
+        // Create a new todo instance
+        $todo = new Todo();
+        $todo->description = $request->description;
+        // $todo->completed = $request->filled('completed') ? $request->completed : false;
         $todo->save();
 
-        return response()->json($todo);
+        // Return the newly created todo
+        return response()->json($todo, 201);
+
+        // return $request;
     }
 
-    public function delete()
+    /**
+     * Display the specified resource.
+     */
+    public function show(string $id)
     {
-        $todo = Todo::where('completed', true)->delete();
+        //
+    }
 
-        return response()->json($todo);
+    /**
+     * Show the form for editing the specified resource.
+     */
+    public function edit(string $id)
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     */
+    public function update(Request $request, string $id)
+    {
+        //
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     */
+    public function destroy(string $id)
+    {
+        //
     }
 }

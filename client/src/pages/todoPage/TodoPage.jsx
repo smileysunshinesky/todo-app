@@ -1,4 +1,5 @@
-import { useState } from "react";
+
+import React, { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { toggleTheme } from "../../redux/reducers/themeSlice";
 import axios from "axios";
@@ -17,16 +18,14 @@ export default function TodoPage() {
 
   const handleTaskSubmit = async (event) => {
     event.preventDefault();
-  
     try {
-      const response = await axios.post("/api/todos", {
+      const response = await axios.post("http://127.0.0.1:8000/api/todos", {
         description: task,
       });
-  
       console.log("Task added: ", response.data);
-      setTask(""); 
+      setTask("");
     } catch (error) {
-      console.error("Some error: ", error);
+      console.error("Error adding task: ", error);
     }
   };
 
@@ -43,9 +42,8 @@ export default function TodoPage() {
   return (
     <div className={`main ${isDarkTheme ? "main_dark" : "main_light"}`}>
       <div
-        className={`main__background ${
-          isDarkTheme ? "main__background_dark" : "main__background_light"
-        }`}
+        className={`main__background ${isDarkTheme ? "main__background_dark" : "main__background_light"
+          }`}
       />
 
       <div className="main__block">
@@ -53,35 +51,31 @@ export default function TodoPage() {
           <h1 className="main__section-title">todo</h1>
 
           <button
-            className={`main__theme-btn ${
-              isDarkTheme ? "main__theme-btn_dark" : "main__theme-btn_light"
-            }`}
+            className={`main__theme-btn ${isDarkTheme ? "main__theme-btn_dark" : "main__theme-btn_light"
+              }`}
             onClick={handleThemeToggle}
           />
         </div>
 
         <div
-          className={`input-block ${
-            isDarkTheme ? "input-block_dark" : "input-block_light"
-          }`}
+          className={`input-block ${isDarkTheme ? "input-block_dark" : "input-block_light"
+            }`}
         >
           <div
-            className={`input-block__circle ${
-              isDarkTheme
+            className={`input-block__circle ${isDarkTheme
                 ? "input-block__circle_dark"
                 : "input-block__circle_light"
-            }`}
+              }`}
           />
 
           <input
             type="text"
             name="task"
             id="task"
-            className={`input-block__textfield ${
-              isDarkTheme
+            className={`input-block__textfield ${isDarkTheme
                 ? "input-block__textfield_dark"
                 : "input-block__textfield_light"
-            }`}
+              }`}
             value={task}
             onChange={handleInputChange}
             onKeyUp={handleKeyPress}
@@ -97,56 +91,50 @@ export default function TodoPage() {
           <TodoTab />
 
           <div
-            className={`total-lists ${
-              isDarkTheme ? "total-lists_dark" : "total-lists_light"
-            }`}
+            className={`total-lists ${isDarkTheme ? "total-lists_dark" : "total-lists_light"
+              }`}
           >
             <p
-              className={`total-lists__count ${
-                isDarkTheme
+              className={`total-lists__count ${isDarkTheme
                   ? "total-lists__count_dark"
                   : "total-lists__count-light"
-              }`}
+                }`}
             >
               <span className="count">3</span> items left
             </p>
 
             <div className="total-lists__filter-block">
               <button
-                className={`total-lists__btn ${
-                  isDarkTheme
+                className={`total-lists__btn ${isDarkTheme
                     ? "total-lists__btn_dark"
                     : "total-lists__btn_light"
-                }`}
+                  }`}
               >
                 All
               </button>
 
               <button
-                className={`total-lists__btn ${
-                  isDarkTheme
+                className={`total-lists__btn ${isDarkTheme
                     ? "total-lists__btn_dark"
                     : "total-lists__btn_light"
-                }`}
+                  }`}
               >
                 Active
               </button>
 
               <button
-                className={`total-lists__btn ${
-                  isDarkTheme
+                className={`total-lists__btn ${isDarkTheme
                     ? "total-lists__btn_dark"
                     : "total-lists__btn_light"
-                }`}
+                  }`}
               >
                 Completed
               </button>
             </div>
 
             <button
-              className={`total-lists__btn ${
-                isDarkTheme ? "total-lists__btn_dark" : "total-lists__btn_light"
-              }`}
+              className={`total-lists__btn ${isDarkTheme ? "total-lists__btn_dark" : "total-lists__btn_light"
+                }`}
             >
               Clear Completed
             </button>
@@ -154,9 +142,8 @@ export default function TodoPage() {
         </div>
 
         <p
-          className={`main__subtitle ${
-            isDarkTheme ? "main__subtitle_dark" : "main__subtitle_light"
-          }`}
+          className={`main__subtitle ${isDarkTheme ? "main__subtitle_dark" : "main__subtitle_light"
+            }`}
         >
           Drag and drop to reorder list
         </p>
